@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_exchange;
     private Button btn_settings;
 
+    private boolean needShowtext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: ");
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         btn_scanning = findViewById(R.id.btn_scanning);
         btn_exchange = findViewById(R.id.btn_exchange);
         btn_settings = findViewById(R.id.btn_settings);
+
+        needShowtext = false;
         
         btn_scanning.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,23 +53,32 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, Scanning.class);
                     startActivity(intent);
                 }else{
-                    Snackbar mySnackbar = Snackbar.make(v, R.string.sizeNotNull,Snackbar.LENGTH_SHORT);
-                    mySnackbar.setAction("OK", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            MainPresenter.getInstance().clearScanningList();
-                            Intent intent = new Intent(MainActivity.this, Scanning.class);
-                            startActivity(intent);
-                        }
-                    });
-                    mySnackbar.setAction("CANCEL", new View.OnClickListener(){
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(MainActivity.this, Scanning.class);
-                            startActivity(intent);
-                        }
-                    });
-                    mySnackbar.show();
+                    needShowtext = !needShowtext;
+                    if (needShowtext) {
+
+                        Snackbar mySnackbar = Snackbar.make(v, R.string.sizeNotNull, Snackbar.LENGTH_SHORT);
+                        mySnackbar.setAction("OK", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                needShowtext = false;
+                                MainPresenter.getInstance().clearScanningList();
+                                Intent intent = new Intent(MainActivity.this, Scanning.class);
+                                startActivity(intent);
+                            }
+                        });
+                        mySnackbar.show();
+                    }else{
+                        intent = new Intent(MainActivity.this, Scanning.class);
+                        startActivity(intent);
+                    }
+//                    mySnackbar.setAction("CANCEL", new View.OnClickListener(){
+//                        @Override
+//                        public void onClick(View v) {
+//                            Intent intent = new Intent(MainActivity.this, Scanning.class);
+//                            startActivity(intent);
+//                        }
+//                    });
+
                 }
             }
         });

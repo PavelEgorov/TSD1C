@@ -4,7 +4,7 @@
             "outputFile": "D:\\Android Developer\\TSD\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
             "map": [
                 {
-                    "source": "D:\\Android Developer\\Settings\\.gradle\\caches\\transforms-2\\files-2.1\\dbe493a215c12b16b842e729f6d7f5f8\\appcompat-1.1.0\\res\\values-v18\\values-v18.xml",
+                    "source": "D:\\Android Developer\\Settings\\.gradle\\caches\\transforms-2\\files-2.1\\eee952f947f32e84249ecaed0a3d3e92\\appcompat-1.1.0\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

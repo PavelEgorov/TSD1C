@@ -20,4 +20,5 @@
     <string name="share">передать</string>
 
     <string name="sizeNotNull">Список не пуст. Очистить список?</string>
+    <string name="auto"> авто </string>
 </resources>

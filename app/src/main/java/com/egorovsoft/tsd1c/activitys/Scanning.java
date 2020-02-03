@@ -10,6 +10,9 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.egorovsoft.tsd1c.MainPresenter;
@@ -31,6 +34,8 @@ public class Scanning extends AppCompatActivity implements Observer {
     private ArrayList<ScanItem> list;
     private Button btn_add;
     private TextInputLayout tv_code;
+    private EditText edtScanning;
+    private CheckBox chbAuto;
 
 
     @Override
@@ -39,8 +44,8 @@ public class Scanning extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scanning);
 
-        tv_code = findViewById(R.id.til_scancode);
-        tv_code.getEditText().addTextChangedListener(new TextWatcher() {
+        edtScanning = findViewById(R.id.edtScanning);
+        edtScanning.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 Log.d(TAG, "beforeTextChanged: s: " + s.toString());
@@ -55,10 +60,13 @@ public class Scanning extends AppCompatActivity implements Observer {
             @Override
             public void afterTextChanged(Editable s) {
                 Log.d(TAG, "afterTextChanged: " + s.toString());
-                if (!s.toString().equals("")) MainPresenter.getInstance().addToList(tv_code.getEditText().getText().toString());
+                if (!s.toString().equals("")) MainPresenter.getInstance().addToList(edtScanning.getText().toString());
                 s.clear();
             }
         });
+
+        tv_code = findViewById(R.id.til_scancode);
+
         btn_add = findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +81,35 @@ public class Scanning extends AppCompatActivity implements Observer {
 
         Publisher.getInstance().subscribe(this);
 
-        }
+        chbAuto = findViewById(R.id.chbAuto);
+
+        chbAuto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                setVisibleEditText(isChecked);
+            }
+        });
+
+        chbAuto.setChecked(true);
+        setVisibleEditText(chbAuto.isChecked());
+    }
 
     @Override
     protected void onStop() {
         Log.d(TAG, "onStop: ");
         Publisher.getInstance().unsubscribe(this);
         super.onStop();
+    }
+
+    private void setVisibleEditText(boolean isChecked){
+        if (isChecked){
+            tv_code.setVisibility(View.GONE);
+            edtScanning.setVisibility(View.VISIBLE);
+        }else{
+            tv_code.setVisibility(View.VISIBLE);
+            edtScanning.setVisibility(View.GONE);
+        }
     }
 
     private void initRecyclerView() {

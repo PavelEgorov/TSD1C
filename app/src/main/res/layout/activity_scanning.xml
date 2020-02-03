@@ -7,6 +7,19 @@
     android:orientation="vertical"
     tools:context=".activitys.Scanning">
 
+    <CheckBox
+        android:id="@+id/chbAuto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/auto" />
+
+    <EditText
+        android:id="@+id/edtScanning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_scancode"
         android:layout_width="match_parent"
