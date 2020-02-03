@@ -227,4 +227,12 @@ public class MainPresenter {
             this.fileDir = fileDir;
         }
     }
+
+    public void clearScanningList() {
+        Log.d(TAG, instance.toString() + " clearScanningList: ");
+
+        synchronized (sync) {
+            scaningList.getList().clear();
+        }
+    }
 }

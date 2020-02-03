@@ -19,4 +19,6 @@
     <string name="file_saved">file was saved</string>
     <string name="file_directory">File directory</string>
     <string name="share">Share</string>
+
+    <string name="sizeNotNull">list is not empty. Clear list?</string>
 </resources>

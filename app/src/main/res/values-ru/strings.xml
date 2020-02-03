@@ -18,4 +18,6 @@
     <string name="file_saved">файл был сохранен</string>
     <string name="file_directory">папка для сохранения</string>
     <string name="share">передать</string>
+
+    <string name="sizeNotNull">Список не пуст. Очистить список?</string>
 </resources>

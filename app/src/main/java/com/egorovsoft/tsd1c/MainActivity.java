@@ -16,6 +16,7 @@ import android.widget.Button;
 import com.egorovsoft.tsd1c.activitys.Exchange;
 import com.egorovsoft.tsd1c.activitys.Scanning;
 import com.egorovsoft.tsd1c.activitys.Settings;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -46,10 +47,26 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 if (MainPresenter.getInstance().getScaningList().size() == 0){
                     intent = new Intent(MainActivity.this, Scanning.class);
+                    startActivity(intent);
                 }else{
-                    intent = new Intent(MainActivity.this, Scanning.class);
+                    Snackbar mySnackbar = Snackbar.make(v, R.string.sizeNotNull,Snackbar.LENGTH_SHORT);
+                    mySnackbar.setAction("OK", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            MainPresenter.getInstance().clearScanningList();
+                            Intent intent = new Intent(MainActivity.this, Scanning.class);
+                            startActivity(intent);
+                        }
+                    });
+                    mySnackbar.setAction("CANCEL", new View.OnClickListener(){
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(MainActivity.this, Scanning.class);
+                            startActivity(intent);
+                        }
+                    });
+                    mySnackbar.show();
                 }
-                startActivity(intent);
             }
         });
         
