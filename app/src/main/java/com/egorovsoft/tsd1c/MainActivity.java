@@ -43,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: btn_scanning");
-                Intent intent = new Intent(MainActivity.this, Scanning.class);
+                Intent intent;
+                if (MainPresenter.getInstance().getScaningList().size() == 0){
+                    intent = new Intent(MainActivity.this, Scanning.class);
+                }else{
+                    intent = new Intent(MainActivity.this, Scanning.class);
+                }
                 startActivity(intent);
             }
         });

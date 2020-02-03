@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
     tools:context=".activitys.Scanning">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -24,7 +23,6 @@
             android:id="@+id/btn_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text="@string/add" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -32,5 +30,5 @@
         android:id="@+id/rv_list_of_scancodes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp" />
+        />
 </LinearLayout>
