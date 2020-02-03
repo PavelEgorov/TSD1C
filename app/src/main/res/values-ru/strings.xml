@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scanning">сканирование</string>
+    <string name="exchange">обмен</string>
+    <string name="settings">настройки</string>
+
+    <string name="save_settings">Настройки были сохранены</string>
+
+    <string name="language">Язык</string>
+    <string name="english">english</string>
+    <string name="russian">русский</string>
+    <string name="back">назад</string>
+
+    <string name="enter_scancode">введите штрихкод</string>
+    <string name="add">добавить</string>
+    <string name="save_file">сохранить в файл</string>
+
+    <string name="file_saved">файл был сохранен</string>
+    <string name="file_directory">папка для сохранения</string>
+    <string name="share">передать</string>
+</resources>

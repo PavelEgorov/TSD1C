@@ -1,0 +1,77 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.egorovsoft.tsd1c"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+11-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:5:5-80
+11-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:5:22-78
+12
+13    <application
+13-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:7:5-34:19
+14        android:allowBackup="true"
+14-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:8:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.1.0] D:\Android Developer\Settings\.gradle\caches\transforms-2\files-2.1\9b282167d5edf2ce15b1570bf9b055c0\core-1.1.0\AndroidManifest.xml:24:18-86
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:9:9-43
+18        android:label="@string/app_name"
+18-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:10:9-41
+19        android:roundIcon="@mipmap/ic_launcher_round"
+19-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:11:9-54
+20        android:supportsRtl="true"
+20-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:12:9-35
+21        android:testOnly="true"
+22        android:theme="@style/AppTheme" >
+22-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:13:9-40
+23        <activity android:name="com.egorovsoft.tsd1c.activitys.Exchange" />
+23-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:14:9-65
+23-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:14:19-53
+24        <activity android:name="com.egorovsoft.tsd1c.activitys.Scanning" />
+24-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:15:9-56
+24-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:15:19-53
+25        <activity android:name="com.egorovsoft.tsd1c.activitys.Settings" />
+25-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:16:9-56
+25-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:16:19-53
+26        <activity android:name="com.egorovsoft.tsd1c.MainActivity" >
+26-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:17:9-23:20
+26-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:17:19-47
+27            <intent-filter>
+27-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:18:13-22:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:19:17-69
+28-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:19:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:21:17-77
+30-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:21:27-74
+31            </intent-filter>
+32        </activity>
+33
+34        <provider
+35            android:name="androidx.core.content.FileProvider"
+35-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:26:13-62
+36            android:authorities="com.egorovsoft.tsd1c.provider"
+36-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:27:13-60
+37            android:exported="false"
+37-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:28:13-37
+38            android:grantUriPermissions="true" >
+38-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:29:13-47
+39            <meta-data
+39-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:30:13-32:58
+40                android:name="android.support.FILE_PROVIDER_PATHS"
+40-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:31:17-67
+41                android:resource="@xml/provider_paths" />
+41-->D:\Android Developer\TSD\app\src\main\AndroidManifest.xml:32:17-55
+42        </provider>
+43    </application>
+44
+45</manifest>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name" translatable="false">TSD1C</string>
+
+    <string name="scanning">Scanning</string>
+    <string name="exchange">exchange</string>
+    <string name="settings">settings</string>
+
+    <string name="save_settings">Settings was saved</string>
+
+    <string name="language">Language</string>
+    <string name="english">english</string>
+    <string name="russian">русский</string>
+    <string name="back">back</string>
+
+    <string name="enter_scancode">enter scancode</string>
+    <string name="add">add</string>
+    <string name="save_file">save into file</string>
+
+    <string name="file_saved">file was saved</string>
+    <string name="file_directory">File directory</string>
+    <string name="share">Share</string>
+</resources>

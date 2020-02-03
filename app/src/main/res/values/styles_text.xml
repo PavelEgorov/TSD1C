@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Header">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="CardName">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="CardScanCode">
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="CardScanCodeCount">
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>
