@@ -1149,6 +1149,7 @@ id bottom
 id btn_add
 id btn_back
 id btn_exchange
+id btn_load
 id btn_save_file
 id btn_scanning
 id btn_settings
@@ -1473,6 +1474,7 @@ string file_directory
 string file_saved
 string hide_bottom_view_on_scroll_behavior
 string language
+string load
 string mtrl_chip_close_icon_content_description
 string password_toggle_content_description
 string path_password_eye

@@ -1,7 +1,9 @@
 package com.egorovsoft.tsd1c.data;
 
 public class ScanItem {
+    private int systemCount;
     private int count;
+    private String id;
     private String name;
     private String scanCode;
 
@@ -29,12 +31,30 @@ public class ScanItem {
         this.scanCode = scanCode;
     }
 
+    public int getSystemCount() {
+        return systemCount;
+    }
+
+    public void setSystemCount(int systemCount) {
+        this.systemCount = systemCount;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "ScanItem{" +
                 "count=" + count +
                 ", name='" + name + '\'' +
                 ", scanCode='" + scanCode + '\'' +
+                ", systemCount='" + systemCount + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

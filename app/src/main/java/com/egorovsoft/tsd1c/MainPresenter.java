@@ -235,4 +235,8 @@ public class MainPresenter {
             scaningList.getList().clear();
         }
     }
+
+    public void loadPositionFile(String file) {
+        scaningList = FileManager.gsonToArray(file);
+    }
 }

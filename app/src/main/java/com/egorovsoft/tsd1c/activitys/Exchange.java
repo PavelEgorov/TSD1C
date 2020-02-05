@@ -1,5 +1,6 @@
 package com.egorovsoft.tsd1c.activitys;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.egorovsoft.tsd1c.FileManagers.FileManager;
 import com.egorovsoft.tsd1c.MainPresenter;
 import com.egorovsoft.tsd1c.R;
 
@@ -23,9 +25,12 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 public class Exchange extends AppCompatActivity {
     private final static String TAG = "Exchange";
+    private static final int LOADFILEREQUESTCODE = 1001;
+
 
     private Button btn_save_file;
     private Button btn_share;
+    private Button btn_load;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,19 @@ public class Exchange extends AppCompatActivity {
                 file = getExternalCacheDir();
                 MainPresenter.getInstance().saveIntoFile(file);
                 Toast.makeText(getApplicationContext(), R.string.file_saved, LENGTH_SHORT).show();
+            }
+        });
+
+        btn_load = findViewById(R.id.btn_load);
+        btn_load.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: btn_load");
+
+                Intent load = new Intent(Intent.ACTION_GET_CONTENT, null);
+                load.setType("*/*");
+                startActivityForResult(load, LOADFILEREQUESTCODE);
             }
         });
     }
@@ -85,5 +103,17 @@ public class Exchange extends AppCompatActivity {
         // Make sure you put example png image named myImage.png in your
         // directory
         startActivity(Intent.createChooser(share, "Share file!"));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode != RESULT_OK) return;
+        if (requestCode == LOADFILEREQUESTCODE){
+            File file = new File(data.getData().getPath());
+
+            MainPresenter.getInstance().loadPositionFile(FileManager.readFile(file));
+        }
     }
 }

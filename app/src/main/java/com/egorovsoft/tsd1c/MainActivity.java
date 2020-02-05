@@ -112,6 +112,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }else MainPresenter.getInstance().setHaveSavePermission(true);
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{
+                                Manifest.permission.INTERNET
+                        },
+                        PERMISSION_REQUEST_CODE);
+            }
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{
+                                Manifest.permission.READ_EXTERNAL_STORAGE
+                        },
+                        PERMISSION_REQUEST_CODE);
+            }
+        }
     }
 
     @Override

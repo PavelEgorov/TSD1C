@@ -22,4 +22,5 @@
 
     <string name="sizeNotNull">list is not empty. Clear list?</string>
     <string name="auto">auto</string>
+    <string name="load">load</string>
 </resources>
