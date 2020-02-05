@@ -20,6 +20,8 @@ import com.egorovsoft.tsd1c.MainPresenter;
 import com.egorovsoft.tsd1c.R;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -111,8 +113,14 @@ public class Exchange extends AppCompatActivity {
 
         if (resultCode != RESULT_OK) return;
         if (requestCode == LOADFILEREQUESTCODE){
-            File file = new File(data.getData().getPath());
+            //ile file = new File(data.getData().getPath());
 
+            InputStream file = null;
+            try {
+                file = getContentResolver().openInputStream(data.getData());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             MainPresenter.getInstance().loadPositionFile(FileManager.readFile(file));
         }
     }

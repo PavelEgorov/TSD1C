@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 
@@ -33,20 +34,16 @@ public class FileManager {
         }
     }
 
-    public static String readFile(File myFile){
+    public static String readFile(InputStream inputStream){
         StringBuilder stringBuilder = new StringBuilder();
+        //FileInputStream inputStream = new FileInputStream(myFile);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line;
         try {
-            FileInputStream inputStream = new FileInputStream(myFile);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            try {
-                while ((line = bufferedReader.readLine()) != null){
-                    stringBuilder.append(line);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(line);
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
