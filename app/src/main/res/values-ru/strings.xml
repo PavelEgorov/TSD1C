@@ -22,4 +22,5 @@
     <string name="sizeNotNull">Список не пуст. Очистить список?</string>
     <string name="auto"> авто </string>
     <string name="load">загрузить</string>
+    <string name="file_name">имя файла</string>
 </resources>

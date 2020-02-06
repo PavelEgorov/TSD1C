@@ -2,6 +2,7 @@ package com.egorovsoft.tsd1c.FileManagers;
 
 import android.util.Log;
 
+import com.egorovsoft.tsd1c.MainPresenter;
 import com.egorovsoft.tsd1c.data.ScanItems;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,14 +19,16 @@ import java.lang.reflect.Type;
 
 
 public class FileManager {
-    private final static String FILEPATH = "/tsd_to_1c.txt";
+    public final static String FILEPATH = "tsd_to_1c";
+    public final static String FILE = ".txt";
     private static final String TAG = "FileManager";
     private final static String FILENAME = "/1c_to_tsd.txt";
 
-    public static void saveFile(File filesDir, String text){
-        Log.d(TAG, "saveFile: " + filesDir + FILEPATH);
+    public static void saveFile(File filesDir, String text, String fileName){
+        Log.d(TAG, "saveFile: " + filesDir + FILEPATH + FILE);
         try {
-            FileWriter f = new FileWriter(filesDir + FILEPATH, false);
+            FileWriter f = new FileWriter(filesDir + MainPresenter.getInstance().getName(),
+                    false);
             f.write(text);
             f.flush();
             f.close();

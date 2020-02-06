@@ -9,6 +9,17 @@
     android:padding="20dp"
     tools:context=".activitys.Exchange">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtFileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/file_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/btn_save_file"
         android:layout_width="match_parent"

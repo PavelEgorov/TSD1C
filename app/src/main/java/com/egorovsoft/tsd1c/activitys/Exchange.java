@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.egorovsoft.tsd1c.FileManagers.FileManager;
 import com.egorovsoft.tsd1c.MainPresenter;
 import com.egorovsoft.tsd1c.R;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,6 +31,7 @@ public class Exchange extends AppCompatActivity {
     private static final int LOADFILEREQUESTCODE = 1001;
 
 
+    private TextInputLayout edtFileName;
     private Button btn_save_file;
     private Button btn_share;
     private Button btn_load;
@@ -40,13 +42,17 @@ public class Exchange extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exchange);
 
+        edtFileName = findViewById(R.id.edtFileName);
+
         btn_share = findViewById(R.id.btn_share);
         btn_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: btn_share");
 
-                MainPresenter.getInstance().saveIntoFile(Environment.getExternalStorageDirectory());
+                MainPresenter.getInstance().getFileName(edtFileName.getEditText().getText().toString());
+
+                MainPresenter.getInstance().saveIntoFile(Environment.getExternalStorageDirectory(), MainPresenter.getInstance().getName());
                 shareFile(v.getContext());
                 Toast.makeText(getApplicationContext(), R.string.file_saved, LENGTH_SHORT).show();
             }
@@ -59,7 +65,9 @@ public class Exchange extends AppCompatActivity {
                 Log.d(TAG, "onClick: btn_save_file");
                 File file;
                 file = getExternalCacheDir();
-                MainPresenter.getInstance().saveIntoFile(file);
+                MainPresenter.getInstance().getFileName(edtFileName.getEditText().getText().toString());
+
+                MainPresenter.getInstance().saveIntoFile(file, MainPresenter.getInstance().getName());
                 Toast.makeText(getApplicationContext(), R.string.file_saved, LENGTH_SHORT).show();
             }
         });
@@ -73,7 +81,7 @@ public class Exchange extends AppCompatActivity {
 
                 Intent load = new Intent(Intent.ACTION_GET_CONTENT, null);
                 load.setType("*/*");
-                startActivityForResult(load, LOADFILEREQUESTCODE);
+                startActivityForResult(Intent.createChooser(load, "find file!"), LOADFILEREQUESTCODE);
             }
         });
     }
@@ -81,10 +89,8 @@ public class Exchange extends AppCompatActivity {
     private void shareFile(Context context) {
         Intent share = new Intent(Intent.ACTION_SEND);
 
-        // If you want to share a png image only, you can do:
-        // setType("image/png"); OR for jpeg: setType("image/jpeg");
         String filePath = Environment.getExternalStorageDirectory()
-                + "/tsd_to_1c.txt";
+                + MainPresenter.getInstance().getName();
 
         File fileToShare = new File(filePath);
 
@@ -102,8 +108,6 @@ public class Exchange extends AppCompatActivity {
             share.setDataAndType(contentUri, "file/*");
             share.putExtra(Intent.EXTRA_STREAM, contentUri);
         }
-        // Make sure you put example png image named myImage.png in your
-        // directory
         startActivity(Intent.createChooser(share, "Share file!"));
     }
 

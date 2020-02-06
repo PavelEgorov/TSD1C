@@ -16,6 +16,7 @@ import com.egorovsoft.tsd1c.preference.SPreference;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 
@@ -42,6 +43,8 @@ public class MainPresenter {
     private String fileDir;
 
     private boolean haveSavePermission;
+
+    private String name;
 
     private MainPresenter(){
         Log.d(TAG, instance==null ? "instance = null" : instance.toString() + " MainPresenter: ");
@@ -190,11 +193,11 @@ public class MainPresenter {
         Publisher.getInstance().notifyUpdateList(scaningList.getList());
     }
 
-    public void saveIntoFile(File filesDir) {
+    public void saveIntoFile(File filesDir, String fileName) {
         Log.d(TAG, instance.toString() + " saveIntoFile: ");
         if (!isHaveSavePermission()) return;
 
-        FileManager.saveFile(filesDir, FileManager.arrayToGson(scaningList));
+        FileManager.saveFile(filesDir, FileManager.arrayToGson(scaningList), fileName);
     }
 
     public boolean isHaveSavePermission() {
@@ -237,6 +240,33 @@ public class MainPresenter {
     }
 
     public void loadPositionFile(String file) {
+        Log.d(TAG, instance.toString() + " loadPositionFile: ");
         scaningList = FileManager.gsonToArray(file);
+    }
+
+    public void getFileName(String fileName){
+        Log.d(TAG, instance.toString() + " getFileName: ");
+        setName("");
+
+        String name;
+        if (fileName.equals("")){
+            name = "/" + FileManager.FILEPATH + " " + new Date().toString();
+        }else{
+            name = "/" + fileName;
+        }
+
+        setName("/" + name + FileManager.FILE);
+    }
+
+    public String getName() {
+        Log.d(TAG, instance.toString() + " getName: ");
+        return name;
+    }
+
+    public void setName(String name) {
+        Log.d(TAG, instance.toString() + " setName: ");
+        synchronized (sync) {
+            this.name = name;
+        }
     }
 }
