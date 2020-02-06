@@ -1185,6 +1185,7 @@ id direct
 id disableHome
 id edTxt_fileDir
 id edit_query
+id edtFileName
 id edtScanning
 id end
 id enterAlways
@@ -1471,6 +1472,7 @@ string exchange
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string file_directory
+string file_name
 string file_saved
 string hide_bottom_view_on_scroll_behavior
 string language

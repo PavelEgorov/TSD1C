@@ -81,7 +81,9 @@ public class Exchange extends AppCompatActivity {
 
                 Intent load = new Intent(Intent.ACTION_GET_CONTENT, null);
                 load.setType("*/*");
-                startActivityForResult(Intent.createChooser(load, "find file!"), LOADFILEREQUESTCODE);
+                load.addCategory(Intent.CATEGORY_OPENABLE);
+                Intent i = Intent.createChooser(load, "load file");
+                startActivityForResult(i, LOADFILEREQUESTCODE);
             }
         });
     }
@@ -117,7 +119,6 @@ public class Exchange extends AppCompatActivity {
 
         if (resultCode != RESULT_OK) return;
         if (requestCode == LOADFILEREQUESTCODE){
-            //ile file = new File(data.getData().getPath());
 
             InputStream file = null;
             try {
